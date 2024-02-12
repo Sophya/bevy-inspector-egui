@@ -46,7 +46,7 @@ pretty-type-name = "1.0"
 smallvec = "1.10"
 
 [dev-dependencies]
-bevy = { version = "0.12", default-features = false, features = [
+bevy = { version = "0.12.3", default-features = false, features = [
     "x11",
     "bevy_winit",
     "bevy_pbr",
