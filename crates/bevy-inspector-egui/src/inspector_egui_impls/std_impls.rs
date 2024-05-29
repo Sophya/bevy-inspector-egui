@@ -296,6 +296,7 @@ impl InspectorPrimitive for Duration {
     }
 }
 
+#[cfg(feature = "bevy_egui/default")]
 impl InspectorPrimitive for Instant {
     fn ui(
         &mut self,

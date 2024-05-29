@@ -11,6 +11,8 @@ use std::{
 
 mod bevy_impls;
 mod glam_impls;
+
+#[cfg(feature = "bevy_egui/default")]
 mod image;
 mod std_impls;
 
@@ -270,6 +272,7 @@ pub fn register_std_impls(type_registry: &mut TypeRegistry) {
     add::<std::ops::Range<f64>>(type_registry);
 
     add::<std::time::Duration>(type_registry);
+    #[cfg(feature = "bevy_egui/default")]
     add_of_with_many::<Instant>(type_registry, many_unimplemented::<Instant>);
 }
 
@@ -306,6 +309,7 @@ pub fn register_glam_impls(type_registry: &mut TypeRegistry) {
 /// Register [`InspectorEguiImpl`]s for `bevy` types
 #[rustfmt::skip]
 pub fn register_bevy_impls(type_registry: &mut TypeRegistry) {
+    #[cfg(feature = "bevy_egui/default")]
     add_of_with_many::<bevy_asset::Handle<bevy_render::texture::Image>>(type_registry, many_unimplemented::<bevy_asset::Handle<bevy_render::texture::Image>>);
     add_of_with_many::<bevy_asset::Handle<bevy_render::mesh::Mesh>>(type_registry, many_unimplemented::<bevy_asset::Handle<bevy_render::mesh::Mesh>>);
     add_of_with_many::<bevy_ecs::entity::Entity>(type_registry, many_unimplemented::<bevy_ecs::entity::Entity>);
